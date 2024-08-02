@@ -1,34 +1,34 @@
 import java.awt.*;
 import javax.swing.*;
 
+
 public class Main extends JFrame{
     public static void main(String[] args) throws Exception {
       Main window = new Main();  
     }
 
-
     class Canvas extends JPanel {
-        Grid grid; 
       public Canvas() {
-        Grid grid = new Grid();
+
         setPreferredSize(new Dimension(720,720));
       }
-
       @Override
-      public void paint(Graphics g) {
+      public void paint(Graphics graphics) {
+        
+        int i = 0;
         for(int x = 10; x < 710; x+=35) {
             for (int y = 10; y < 710; y+=35){
-            g.setColor(Color.WHITE);
-             g.fillRect(x,y,35,35);
-             g.setColor(Color.BLACK);
-             g.drawRect(x,y,35,35);
-             Cell cell = new Cell(x,y,35,35);
-     }
-    }
+
+             Cell cell = new Cell(x, y, graphics);
+             cell.drawCell(x, y, graphics);
+             Grid.addCell(cell,i);
+             i++;
+            }
+            
+        }
       }
+
     }
-
-
 
     private Main() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,26 +39,44 @@ public class Main extends JFrame{
     }
 
 
+
+
     public class Cell extends Rectangle {
 
-        public Cell(int x, int y, int width, int height) {
+        private Color lineColour = Color.BLACK; 
+        private Color fillColour = Color.WHITE; 
+        private Graphics graphics;
+        private int heightwidth = 35;
+
+        public Cell(int x, int y, Graphics graphics) {
             this.x = x;
             this.y = y;
-            this.width = width;
-            this.height = height;
+            this.graphics = graphics;
         }
-    
+
+        public void drawCell(int x, int y, Graphics graphics) {
+                    graphics.setColor(fillColour);
+                    graphics.fillRect(x,y,35,35);
+                    graphics.setColor(lineColour);
+                    graphics.drawRect(x,y,35,35);
+                }  
+                
+
+        
+        
         
     }
 
-    public class Grid {
-        public Cell[] gridCells;
-        public Grid() {
-        }
+    public class Grid extends JFrame {
+        public static Cell[] gridCells = new Cell[400];
+       
     
-        public void addCell(Cell cell) {
-    
+        public static void addCell(Cell cell, int Position) {
+            gridCells[Position] = cell;
         }
+
+
     
     }
+
 }
