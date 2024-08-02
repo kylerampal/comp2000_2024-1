@@ -1,6 +1,5 @@
-import javax.swing.*;
 import java.awt.*;
-
+import javax.swing.*;
 
 public class Main extends JFrame{
     public static void main(String[] args) throws Exception {
@@ -9,7 +8,9 @@ public class Main extends JFrame{
 
 
     class Canvas extends JPanel {
+        Grid grid; 
       public Canvas() {
+        Grid grid = new Grid();
         setPreferredSize(new Dimension(720,720));
       }
 
@@ -21,6 +22,7 @@ public class Main extends JFrame{
              g.fillRect(x,y,35,35);
              g.setColor(Color.BLACK);
              g.drawRect(x,y,35,35);
+             Cell cell = new Cell(x,y,35,35);
      }
     }
       }
@@ -34,5 +36,29 @@ public class Main extends JFrame{
         Canvas canvas = new Canvas();
         this.setContentPane(canvas);
         this.pack();
+    }
+
+
+    public class Cell extends Rectangle {
+
+        public Cell(int x, int y, int width, int height) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
+    
+        
+    }
+
+    public class Grid {
+        public Cell[] gridCells;
+        public Grid() {
+        }
+    
+        public void addCell(Cell cell) {
+    
+        }
+    
     }
 }
