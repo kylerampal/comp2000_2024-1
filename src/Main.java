@@ -62,7 +62,9 @@ public class Main extends JFrame{
                 }  
                 
 
-        
+        public void hoverCell() {
+
+        }
         
         
     }
@@ -80,3 +82,4 @@ public class Main extends JFrame{
     }
 
 }
+
