@@ -5,6 +5,7 @@ public class Grid {
   // fields
   Cell[][] cells = new Cell[20][20];
   MouseTrail[] trails = new MouseTrail[100];
+  int mouseTrailIDX = 0;
   
   // constructors
   public Grid() {
@@ -23,15 +24,16 @@ public class Grid {
 // trails[idx],clear_circle = new Moustrail(x,y);
 //}
 
-    int mouseTrailIDX = 0;
-    for (int i = 0; i < trails.length; i++) {
-      trails[i].x = mousePos.x;
-      trails[i].y = mousePos.y;
-      trails[i].paint(g, mousePos); // this might be wrong
+      
+      trails[mouseTrailIDX] = new MouseTrail(mousePos.x, mousePos.y);
+      mouseTrailIDX++;
+      // System.out.println(mouseTrailIDX);
+      // System.out.println(trails[mouseTrailIDX].x + "x");
+      // System.out.println(trails[mouseTrailIDX].y + "y");
       if (mouseTrailIDX > 99) {
         mouseTrailIDX = 0;
       }
-    }
+   
 
     for(int i=0; i<cells.length; i++) {
       for(int j=0; j<cells[i].length; j++) {

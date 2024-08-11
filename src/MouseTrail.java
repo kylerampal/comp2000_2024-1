@@ -30,7 +30,7 @@ public class MouseTrail {
     }
 
     public boolean contains(Point p) { // check if within grid
-        if(p != null) {
+        if(p != null) { 
           return p.x >= 10 && p.y >= 10 && p.x <= 710 && p.y <= 710;
         } else {
           return false;
