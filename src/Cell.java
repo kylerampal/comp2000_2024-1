@@ -12,12 +12,15 @@ public class Cell {
   public Cell(int inX, int inY) {
     x = inX;
     y = inY;
+
   }
 
   // methods
   public void paint(Graphics g, Point mousePos) {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);
+      // get x,y of mouse
+      //call method mousetrail, pass mouse pos
     } else {
       g.setColor(Color.WHITE);
     }
