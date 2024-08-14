@@ -1,7 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Grid {
     // fields
@@ -26,11 +26,15 @@ public class Grid {
             }
         }
         
-            if (trails.size() >= 100) {
-              trails.removeFirst();
+            if (trails.size() >= 100) { // if the trails array list has been filled (after the initial 100 trails), then remove the first trail. This pushes everything along by one
+               trails.remove(0);
             }
-            trails.add(new MouseTrail(mousePos.x,mousePos.y));
-            for (int i = 0; i < trails.size(); i++) {
+
+            if (mousePos != null) {     // if the position of the mouse is NOT null, then add a new MouseTrail to the end of the array list
+              trails.add(new MouseTrail(mousePos.x,mousePos.y));
+            }
+            
+            for (int i = 0; i < trails.size(); i++) { // this constantly paints for each trail in the trails array list
               trails.get(i).paint(g, mousePos);
             }
     }

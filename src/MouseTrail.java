@@ -6,6 +6,7 @@ import java.awt.Point;
 public class MouseTrail {
 
     // fields
+    Color trailColor = new Color(0, 0, 0, 20); // transparent black
     int x;
     int y;
     static int size = 10;
@@ -18,19 +19,10 @@ public class MouseTrail {
     }
 
     // methods
-    public void paint(Graphics g, Point mousePos) {
-        if (contains(mousePos)) {
-          g.setColor(Color.YELLOW);
+    public void paint(Graphics g, Point mousePos) { // paints a trail
+
+          g.setColor(trailColor);
           g.drawOval(x, y, size, size);
           g.fillOval(x, y, size, size);
-        }
-    }
-
-    public boolean contains(Point p) { // check if within grid
-        if (p != null) {
-            return p.x >= 10 && p.y >= 10 && p.x <= 710 && p.y <= 710;
-        } else {
-            return false;
-        }
     }
 }
