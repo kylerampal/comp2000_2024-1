@@ -8,6 +8,7 @@ public class Grid {
 
     Cell[][] cells = new Cell[20][20];
     ArrayList<MouseTrail> trails = new ArrayList<MouseTrail>();
+    Point prevMousePos = null;
 
     // constructors
     public Grid() {
@@ -30,9 +31,11 @@ public class Grid {
                trails.remove(0);
             }
 
-            if (mousePos != null) {     // if the position of the mouse is NOT null, then add a new MouseTrail to the end of the array list
+            if (mousePos != null) {     // if the position of the mouse is NOT null, then add a new MouseTrail to the end of the array list   
               trails.add(new MouseTrail(mousePos.x,mousePos.y));
-            }
+
+            
+        }
             
             for (int i = 0; i < trails.size(); i++) { // this constantly paints for each trail in the trails array list
               trails.get(i).paint(g, mousePos);
