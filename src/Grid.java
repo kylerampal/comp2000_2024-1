@@ -29,7 +29,7 @@ public class Grid {
 
         if (mousePos != null) { // if the position of the mouse is NOT null, then add a new MouseTrail to the
                                 // end of the array list
-            if (mousePos.equals(prevMousePos) == false) {
+            if (mousePos.equals(prevMousePos) == false) { // if the previous mouse position is the same as the current mouse position, skip all the adding and go to painting
 
                 if (trails.size() >= 100) { // if the trails array list has been filled (after the initial 100 trails),
                                             // then remove the first trail. This pushes everything along by one

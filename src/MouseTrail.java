@@ -21,8 +21,8 @@ public class MouseTrail {
     // methods
     public void paint(Graphics g, Point mousePos) { // paints a trail
 
-          g.setColor(trailColor);
-          g.drawOval(x, y, size, size);
-          g.fillOval(x, y, size, size);
+        g.setColor(trailColor);
+        g.drawOval(x, y, size, size);
+        g.fillOval(x, y, size, size);
     }
 }
