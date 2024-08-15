@@ -26,19 +26,24 @@ public class Grid {
                 cells[i][j].paint(g, mousePos);
             }
         }
-        
-            if (trails.size() >= 100) { // if the trails array list has been filled (after the initial 100 trails), then remove the first trail. This pushes everything along by one
-               trails.remove(0);
+
+        if (mousePos != null) { // if the position of the mouse is NOT null, then add a new MouseTrail to the
+                                // end of the array list
+            if (mousePos.equals(prevMousePos) == false) {
+
+                if (trails.size() >= 100) { // if the trails array list has been filled (after the initial 100 trails),
+                                            // then remove the first trail. This pushes everything along by one
+
+                    trails.remove(0);
+                }
+                trails.add(new MouseTrail(mousePos.x, mousePos.y));
+                prevMousePos = mousePos;
+
             }
-
-            if (mousePos != null) {     // if the position of the mouse is NOT null, then add a new MouseTrail to the end of the array list   
-              trails.add(new MouseTrail(mousePos.x,mousePos.y));
-
-            
         }
-            
-            for (int i = 0; i < trails.size(); i++) { // this constantly paints for each trail in the trails array list
-              trails.get(i).paint(g, mousePos);
-            }
+
+        for (int i = 0; i < trails.size(); i++) { // this constantly paints for each trail in the trails array list
+            trails.get(i).paint(g, mousePos);
+        }
     }
 }
